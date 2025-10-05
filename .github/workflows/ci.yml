@@ -1,5 +1,6 @@
-name: CI - Train and evaluate models
+name: ML Workflow
 
+# Trigger workflow on push to kernelridge branch
 on:
   push:
     branches:
@@ -10,21 +11,28 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Step 1: Checkout the repository
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Set up Python
+      # Step 2: Set up Python
+      - name: Set up Python 3.9
         uses: actions/setup-python@v4
         with:
           python-version: '3.9'
 
+      # Step 3: Install dependencies
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run DecisionTree training (train.py)
-        run: python train.py
+      # Step 4: Run DecisionTree model
+      - name: Run DecisionTree model
+        run: |
+          python train.py
 
-      - name: Run KernelRidge training (train2.py)
-        run: python train2.py
+      # Step 5: Run KernelRidge model
+      - name: Run KernelRidge model
+        run: |
+          python train2.py
