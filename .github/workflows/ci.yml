@@ -15,8 +15,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # Step 2: Set up Python
-      - name: Set up Python 3.9
+      # Step 2: Set up Python 3.9
+      - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.9'
@@ -27,12 +27,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      # Step 4: Run DecisionTree model
-      - name: Run DecisionTree model
+      # Step 4: Run both models
+      - name: Run DecisionTree and KernelRidge
         run: |
+          echo "=== Running DecisionTree model ==="
           python train.py
-
-      # Step 5: Run KernelRidge model
-      - name: Run KernelRidge model
-        run: |
+          echo "=== Running KernelRidge model ==="
           python train2.py
