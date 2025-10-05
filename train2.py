@@ -1,4 +1,3 @@
-# train2.py
 from misc import load_data, get_X_y, repeated_evaluate
 from sklearn.kernel_ridge import KernelRidge
 
@@ -14,4 +13,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
